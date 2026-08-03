@@ -1,8 +1,9 @@
 const http = require("http");
+const { getGreeting } = require("./appjs");
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello from CI/CD learning app \n");
+    res.end(getGreeting());
 });
 
 server.listen(3001, () => {
