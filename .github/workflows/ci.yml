@@ -19,11 +19,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t cicd-app:${{ github.sha }} .
       - name: Run container
-        run: docker run -d -p 3000:3000 --name test-container cicd-app:${{ github.sha }}
+        run: docker run -d -p 3001:3001 --name test-container cicd-app:${{ github.sha }}
       - name: Wait for app to be ready
         run: |
           for i in {1..10}; do
-            if curl --fail http://localhost:3000; then
+            if curl --fail http://localhost:3001; then
               echo "App is up!"
               exit 0
             fi
